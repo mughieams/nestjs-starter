@@ -1,6 +1,8 @@
 name: Running Code Coverage
 
 on:
+  push:
+    brances: [main]
   pull_request:
     brances: [main]
 
