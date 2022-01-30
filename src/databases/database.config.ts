@@ -13,6 +13,9 @@ export default registerAs('database', (): any => {
 		synchronize: false,
 		cli: {
 			migrationsDir: 'src/databases/migrations',
-		}
+		},
+		extra: {
+			ssl: true,
+		},
 	};
 });
