@@ -58,6 +58,37 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+## Useful Commands
+### Create New Entity
+
+```bash
+$ npm run typeorm entity:create -- -n <Entity> -d src/modules/<module_name>/entities
+```
+
+example:
+
+```bash
+$ npm run typeorm entity:create -- -n Channel -d src/modules/channel/entities
+```
+
+### Generate New Migration After Create/Modify Entity
+
+```bash
+$ npm run typeorm:migration:generate -n <migration_name>
+```
+
+example:
+
+```bash
+$ npm run typeorm:migration:generate -n 'CreateChannelTable'
+```
+
+### Run Migration
+
+```bash
+$ npm run typeorm:migration:run
+```
+
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
