@@ -1,5 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { RedocOptions, RedocModule } from 'nestjs-redoc';
 import { AppModule } from './app.module';
 
 const PORT = process.env.PORT || 3000;
@@ -20,7 +21,19 @@ async function bootstrap() {
 		ignoreGlobalPrefix: false,
 	});
 
-	SwaggerModule.setup('docs', app, document);
+	const redocOptions: RedocOptions = {
+		sortPropsAlphabetically: false,
+		hideDownloadButton: true,
+		hideHostname: true,
+		noAutoAuth: true,
+		pathInMiddlePanel: true,
+		auth: {
+		  enabled: true,
+		  user: 'narasipeople',
+		  password: 'narasipeople',
+		},
+	  };
+	  await RedocModule.setup('core/docs', app, document, redocOptions);
 	await app.listen(PORT);
 }
 bootstrap();
