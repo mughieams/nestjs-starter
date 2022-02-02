@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [v16.x]
+        node-version: [v12.x, v14.x]
 
     steps:
       - name: Checkout repository
