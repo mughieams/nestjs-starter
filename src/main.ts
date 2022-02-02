@@ -11,6 +11,7 @@ async function bootstrap() {
 		logger: ['error', 'warn', 'log'],
 	});
 
+	app.setGlobalPrefix('api');
 	const options = new DocumentBuilder()
 		.setTitle('API Documentation')
 		.setDescription('Welcome to API Documentation')
@@ -33,7 +34,8 @@ async function bootstrap() {
 		  password: 'narasipeople',
 		},
 	  };
-	  await RedocModule.setup('core/docs', app, document, redocOptions);
+	
+	await RedocModule.setup('docs', app, document, redocOptions);
 	await app.listen(PORT);
 }
 bootstrap();
