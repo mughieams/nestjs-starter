@@ -1,3 +1,4 @@
+import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { RedocOptions, RedocModule } from 'nestjs-redoc';
@@ -12,6 +13,16 @@ async function bootstrap() {
 	});
 
 	app.setGlobalPrefix('api');
+	app.useGlobalPipes(
+		new ValidationPipe({
+			transform: true,
+			transformOptions: { enableImplicitConversion: true },
+			// https://github.com/typestack/class-validator/issues/305
+			whitelist: true,
+			forbidNonWhitelisted: true,
+			forbidUnknownValues: true,
+		}),
+	);
 	const options = new DocumentBuilder()
 		.setTitle('API Documentation')
 		.setDescription('Welcome to API Documentation')
